@@ -2,6 +2,8 @@ package com.example.blockchain.dao;
 
 import com.example.blockchain.po.Block;
 
+import java.util.List;
+
 public interface BlockMapper {
     int deleteByPrimaryKey(String blockhash);
 
@@ -16,4 +18,7 @@ public interface BlockMapper {
     int updateByPrimaryKeySelective(Block record);
 
     int updateByPrimaryKey(Block record);
+
+    List<Block> selectRecent();
+
 }
