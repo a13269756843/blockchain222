@@ -47,7 +47,7 @@ public class TransactionController {
         List<Transaction> transactions = transactionMapper.selectransaction();
         List<TransactionListDTO> transactionListDTOS = transactions.stream().map(transaction -> {
             TransactionListDTO transactionListDTO = new TransactionListDTO();
-            transactionListDTO.setTime(transaction.getTime());
+            transactionListDTO.setTime(transaction.getTime().getTime());
             transactionListDTO.setAmount(0.08);
             transactionListDTO.setTxhash(transaction.getTxhash());
             return transactionListDTO;

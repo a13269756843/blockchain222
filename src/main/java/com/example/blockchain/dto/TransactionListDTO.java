@@ -5,7 +5,7 @@ import java.util.Date;
 public class TransactionListDTO {
     private String txid;
     private String txhash;
-    private Date time;
+    private Long time;
     private Double amount;
 
     public String getTxid() {
@@ -24,11 +24,11 @@ public class TransactionListDTO {
         this.txhash = txhash;
     }
 
-    public Date getTime() {
+    public Long getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(long time) {
         this.time = time;
     }
 
