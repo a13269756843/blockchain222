@@ -21,6 +21,13 @@
     from transaction
     where txid = #{txid,jdbcType=CHAR}
   </select>
+  <select id="selectransaction" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from transaction
+    order by txhash desc
+    limit 5
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from transaction
     where txid = #{txid,jdbcType=CHAR}
