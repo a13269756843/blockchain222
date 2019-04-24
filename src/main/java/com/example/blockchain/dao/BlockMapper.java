@@ -1,5 +1,6 @@
 package com.example.blockchain.dao;
 
+import com.example.blockchain.dto.BlockDetailDTO;
 import com.example.blockchain.po.Block;
 
 import java.util.List;
@@ -21,4 +22,5 @@ public interface BlockMapper {
 
     List<Block> selectRecent();
 
+    List<BlockDetailDTO> selectBlockByHeight(Integer blockheight);
 }

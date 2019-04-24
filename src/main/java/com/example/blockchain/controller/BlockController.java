@@ -56,7 +56,7 @@ public class BlockController {
     }
 
     @GetMapping("/getBlockDetailByHeight")
-    public BlockDetailDTO getBlockDetailByHeight(@RequestParam Integer blockheight){
-        return null;
+    public List<BlockDetailDTO> getBlockDetailByHeight(@RequestParam Integer blockheight){
+        return blockMapper.selectBlockByHeight(blockheight);
     }
 }
