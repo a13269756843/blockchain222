@@ -56,7 +56,23 @@ public class BlockController {
     }
 
     @GetMapping("/getBlockDetailByHeight")
-    public List<BlockDetailDTO> getBlockDetailByHeight(@RequestParam Integer blockheight){
-        return blockMapper.selectBlockByHeight(blockheight);
+    public List<BlockDetailDTO> getBlockDetailByHeight(@RequestParam Integer blockheight) {
+        List<Block> blocks = blockMapper.selectBlockByHeight(blockheight);
+        List<BlockDetailDTO> blockDetailDTOS = blocks.stream().map(block -> {
+            BlockDetailDTO blockDetailDTO = new BlockDetailDTO();
+            blockDetailDTO.setBlockhash(block.getBlockhash());
+            blockDetailDTO.setDifficulty(block.getDifficulty());
+            blockDetailDTO.setHeight(block.getHeight());
+            blockDetailDTO.setMekleRoot(block.getMerkleRoot());
+            blockDetailDTO.setNextBlockhash(block.getNextBlockhash());
+            blockDetailDTO.setOuputTotal(block.getOutputTotal());
+            blockDetailDTO.setPreBlockhash(block.getPrevBlockhash());
+            blockDetailDTO.setSizeOnDisk(block.getSizeOnDisk());
+            blockDetailDTO.setTime(block.getTime());
+            blockDetailDTO.setTranscationFees(block.getTransactionFees());
+            return blockDetailDTO;
+        }).collect(Collectors.toList());
+        return blockDetailDTOS;
     }
+
 }

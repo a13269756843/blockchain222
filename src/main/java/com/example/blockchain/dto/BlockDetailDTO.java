@@ -1,6 +1,7 @@
 package com.example.blockchain.dto;
 
 import java.util.Date;
+import java.util.List;
 
 public class BlockDetailDTO {
     private String blockhash;
@@ -14,6 +15,7 @@ public class BlockDetailDTO {
     private Double ouputTotal;
     private Double transcationFees;
     private String mekleRoot;
+    private List<TransactionInBlockDTO> transactions;
 
     public String getBlockhash() {
         return blockhash;
@@ -101,5 +103,13 @@ public class BlockDetailDTO {
 
     public void setMekleRoot(String mekleRoot) {
         this.mekleRoot = mekleRoot;
+    }
+
+    public List<TransactionInBlockDTO> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<TransactionInBlockDTO> transactions) {
+        this.transactions = transactions;
     }
 }

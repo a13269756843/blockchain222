@@ -22,5 +22,5 @@ public interface BlockMapper {
 
     List<Block> selectRecent();
 
-    List<BlockDetailDTO> selectBlockByHeight(Integer blockheight);
+    List<Block> selectBlockByHeight(Integer blockheight);
 }
