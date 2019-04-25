@@ -21,6 +21,14 @@
     from transaction
     where txid = #{txid,jdbcType=CHAR}
   </select>
+
+  <select id="selectByHash" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from transaction
+    where txhash = #{txhash,jdbcType=CHAR}
+  </select>
+
   <select id="selectransaction" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />

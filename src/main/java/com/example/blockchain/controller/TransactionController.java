@@ -38,10 +38,23 @@ public class TransactionController {
     }
 
     @GetMapping("/getTransactionInfoByTxhash")
-    public TransactionInfoDTO getTransactionInfoByTxhash(@RequestParam String txhash){
-        return null;
-    }
+    public List<TransactionInfoDTO> getTransactionInfoByTxhash(@RequestParam String txhash){
+        List<Transaction> selectransaction = transactionMapper.selectByHash(txhash);
+        List<TransactionInfoDTO> transactionInfoDTOS = selectransaction.stream().map(transaction -> {
+            TransactionInfoDTO transactionInfoDTO = new TransactionInfoDTO();
+            transactionInfoDTO.setFees(transaction.getFees());
+            transactionInfoDTO.setSize(transaction.getSize());
+            transactionInfoDTO.setTime(transaction.getTime());
+            transactionInfoDTO.setTotalInput(transaction.getTotalInput());
+            transactionInfoDTO.setTotalOutput(transaction.getTotalOutput());
+            transactionInfoDTO.setTxhash(transaction.getTxhash());
+            transactionInfoDTO.setTxid(transaction.getTxid());
+            transactionInfoDTO.setWeight(transaction.getWeight());
+            return transactionInfoDTO;
+        }).collect(Collectors.toList());
 
+        return transactionInfoDTOS;
+    }
     @GetMapping("/getTranscation")
     public List<TransactionListDTO> getTranscation(){
         List<Transaction> transactions = transactionMapper.selectransaction();
