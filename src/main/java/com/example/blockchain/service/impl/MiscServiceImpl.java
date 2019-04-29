@@ -64,19 +64,19 @@ public class MiscServiceImpl implements MiscService {
             for (int i = 0; i < txes.size(); i++) {
                 importTx(txes.getJSONObject(i),temphash,date);
             }
-            block.setTxSize(txes.size());
-            block.setSizeOnDisk(blockOrigin.getLong("size"));
-            block.setDifficulty(blockOrigin.getDouble("difficulty"));
-            block.setPrevBlockhash(blockOrigin.getString("previousblockhash"));
-            block.setNextBlockhash(blockOrigin.getString("nextblockhash"));
-            block.setMerkleRoot(blockOrigin.getString("merkleroot"));
-            blockMapper.insert(block);
+        block.setTxSize(txes.size());
+        block.setSizeOnDisk(blockOrigin.getLong("size"));
+        block.setDifficulty(blockOrigin.getDouble("difficulty"));
+        block.setPrevBlockhash(blockOrigin.getString("previousblockhash"));
+        block.setNextBlockhash(blockOrigin.getString("nextblockhash"));
+        block.setMerkleRoot(blockOrigin.getString("merkleroot"));
+        blockMapper.insert(block);
 
-            temphash = blockOrigin.getString("nextblockhash");
-        }
-
-
+        temphash = blockOrigin.getString("nextblockhash");
     }
+
+
+}
 
     public void importTx(JSONObject tx, String blockhash, Date time) throws Throwable {
         Transaction transaction = new Transaction();
